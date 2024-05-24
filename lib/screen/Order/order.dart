@@ -186,7 +186,7 @@ class _OrderState extends State<Order> {
                   children: [
                     Text(
                       '$textCoffee',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                     const Text(
                       'Deep Foam',
@@ -209,7 +209,8 @@ class _OrderState extends State<Order> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        fixedSize: MaterialStateProperty.all(Size(15, 15)),
+                        fixedSize:
+                            MaterialStateProperty.all(const Size(15, 15)),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white),
                         padding: MaterialStateProperty.all(EdgeInsets.zero),
@@ -239,7 +240,8 @@ class _OrderState extends State<Order> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        fixedSize: MaterialStateProperty.all(Size(15, 15)),
+                        fixedSize:
+                            MaterialStateProperty.all(const Size(15, 15)),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white),
                         padding: MaterialStateProperty.all(EdgeInsets.zero),
@@ -324,7 +326,8 @@ class _OrderState extends State<Order> {
                 ),
                 Text(
                   '\$ ${price1?.toStringAsFixed(1) ?? "0.00"}',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.w600),
                 ),
               ],
             ),
