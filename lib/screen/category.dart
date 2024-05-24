@@ -89,7 +89,7 @@ class Category extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '\$ ${priceCoffe[index]}',
+                          '\$ ${priceCoffe[index]}0',
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,

@@ -20,7 +20,7 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
   String selectedSize = 'M';
-  num? price;
+  late num price;
   String? coffee;
   String? textCoffee;
 
@@ -243,7 +243,7 @@ class _DetailState extends State<Detail> {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w100),
                   ),
                   Text(
-                    '\$ $price',
+                    '\$ ${price}0',
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -267,7 +267,12 @@ class _DetailState extends State<Detail> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Order()),
+                    MaterialPageRoute(
+                        builder: (context) => Order(
+                              price: price,
+                              coffee: widget.coffee,
+                              textCoffee: widget.textCoffee,
+                            )),
                   );
                 },
                 child: const Text(
