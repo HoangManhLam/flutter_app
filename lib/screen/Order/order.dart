@@ -4,28 +4,47 @@ import 'package:flutter/widgets.dart';
 import 'button.dart';
 
 class Order extends StatefulWidget {
-  const Order({super.key});
-
+  Order({
+    super.key,
+    required this.price,
+    required this.coffee,
+    required this.textCoffee,
+  });
+  num price;
+  String coffee;
+  String textCoffee;
   @override
   State<Order> createState() => _OrderState();
 }
 
 class _OrderState extends State<Order> {
   int counter = 1;
-  int unitPrice = 5;
-  int price = 5;
-  int wallet = 6;
+  num? price;
+  String? coffee;
+  String? textCoffee;
+  num? price1;
+  num? wallet;
+
+  @override
+  void initState() {
+    price1 = widget.price;
+    price = widget.price;
+    coffee = widget.coffee;
+    textCoffee = widget.textCoffee;
+    wallet = price1! + 1;
+    super.initState();
+  }
 
   void updatePrice() {
     setState(() {
-      price = counter * unitPrice;
+      price1 = counter * widget.price;
     });
   }
 
   void updateWallet() {
     setState(() {
       if (counter >= 1) {
-        wallet = price + 1;
+        wallet = price1! + 1;
       } else {
         wallet = 0;
       }
@@ -155,21 +174,21 @@ class _OrderState extends State<Order> {
                   width: 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    image: const DecorationImage(
-                        image: AssetImage('asset/cf4.png'), fit: BoxFit.fill),
+                    image: DecorationImage(
+                        image: AssetImage('$coffee'), fit: BoxFit.fill),
                   ),
                 ),
                 const SizedBox(
                   width: 15,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Caffee Mocha',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      '$textCoffee',
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
-                    Text(
+                    const Text(
                       'Deep Foam',
                       style: TextStyle(color: Colors.black45),
                     ),
@@ -190,14 +209,15 @@ class _OrderState extends State<Order> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        fixedSize: MaterialStateProperty.all(Size(15, 15)),
+                        fixedSize:
+                            MaterialStateProperty.all(const Size(15, 15)),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white),
                         padding: MaterialStateProperty.all(EdgeInsets.zero),
                       ),
                       onPressed: () {
                         setState(() {
-                          if (counter > 0) counter--;
+                          if (counter > 0) counter = counter - 1;
                           updatePrice();
                           updateWallet();
                         });
@@ -220,14 +240,15 @@ class _OrderState extends State<Order> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        fixedSize: MaterialStateProperty.all(Size(15, 15)),
+                        fixedSize:
+                            MaterialStateProperty.all(const Size(15, 15)),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white),
                         padding: MaterialStateProperty.all(EdgeInsets.zero),
                       ),
                       onPressed: () {
                         setState(() {
-                          counter++;
+                          counter = counter + 1;
                           updatePrice();
                           updateWallet();
                         });
@@ -304,8 +325,9 @@ class _OrderState extends State<Order> {
                   style: TextStyle(fontSize: 17),
                 ),
                 Text(
-                  "\$ $price.00",
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                  '\$ ${price1?.toStringAsFixed(1) ?? "0.00"}',
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -380,7 +402,7 @@ class _OrderState extends State<Order> {
                             fontSize: 18, fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        "\$ $wallet.0",
+                        '\$ ${wallet?.toStringAsFixed(1) ?? "0.00"}',
                         style: const TextStyle(
                             color: Color(0xFFC67C4E),
                             fontWeight: FontWeight.w600),

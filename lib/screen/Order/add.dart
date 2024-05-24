@@ -32,13 +32,6 @@ class AddState extends State<Add> with AddStateMixin {
   }
 
   @override
-  void updateWallet() {
-    setState(() {
-      super.updateWallet();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
