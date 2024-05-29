@@ -13,14 +13,6 @@ void main() {
         fontFamily: 'Sora',
         primaryColor: null,
         primarySwatch: Colors.grey,
-        // textTheme: Typography.material2021().white.copyWith(
-        //       // This will be the style of entered TextField text
-        //       titleMedium: const TextStyle(
-        //         fontSize: 16,
-        //         color: Colors.black,
-        //         fontWeight: FontWeight.w300,
-        //       ),
-        //     ),
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Colors.white,
           selectionHandleColor: Colors.grey,

@@ -47,6 +47,39 @@ class _DetailState extends State<Detail> {
     });
   }
 
+  Widget buildButton(String size) {
+    final bool isSelected = selectedSize == size;
+    return OutlinedButton(
+      style: ButtonStyle(
+        side: MaterialStateProperty.all<BorderSide>(
+          BorderSide(
+            color: isSelected ? Color(0xFFC67C4E) : Colors.black,
+            width: 1,
+          ),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
+        ),
+        fixedSize: MaterialStateProperty.all(Size(120, 50)),
+        backgroundColor: MaterialStateProperty.all(
+          isSelected ? Color(0xFFEDD6C8) : Colors.white,
+        ),
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+      ),
+      onPressed: () {
+        updatePriceDetail(size);
+      },
+      child: Text(
+        size,
+        style: TextStyle(
+          color: isSelected ? Color(0xFFC67C4E) : Colors.black,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -285,39 +318,6 @@ class _DetailState extends State<Detail> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildButton(String size) {
-    final bool isSelected = selectedSize == size;
-    return OutlinedButton(
-      style: ButtonStyle(
-        side: MaterialStateProperty.all<BorderSide>(
-          BorderSide(
-            color: isSelected ? Color(0xFFC67C4E) : Colors.black,
-            width: 1,
-          ),
-        ),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(13),
-          ),
-        ),
-        fixedSize: MaterialStateProperty.all(Size(120, 50)),
-        backgroundColor: MaterialStateProperty.all(
-          isSelected ? Color(0xFFEDD6C8) : Colors.white,
-        ),
-        padding: MaterialStateProperty.all(EdgeInsets.zero),
-      ),
-      onPressed: () {
-        updatePriceDetail(size);
-      },
-      child: Text(
-        size,
-        style: TextStyle(
-          color: isSelected ? Color(0xFFC67C4E) : Colors.black,
         ),
       ),
     );
